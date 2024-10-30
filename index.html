@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corazón Azul Animado</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet"> <!-- Fuente mejorada -->
+    <style>
+        body {
+            display: flex;
+            flex-direction: column; /* Apilar el corazón y el texto */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0); /* Fondo degradado atractivo */
+            overflow: hidden; /* Evitar el scroll */
+        }
+
+        h1 {
+            color: red; /* Color del texto en rojo */
+            font-size: 48px; /* Tamaño de la fuente */
+            margin: 20px; /* Espacio alrededor del texto */
+            text-align: center; /* Centrar el texto */
+            font-family: 'Roboto', sans-serif; /* Fuente mejorada */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra del texto */
+            transition: transform 0.3s; /* Suavizar la transformación */
+        }
+
+        h1:hover {
+            transform: scale(1.1); /* Aumentar al pasar el mouse */
+        }
+
+        .corazon {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            transform: rotate(-45deg);
+            animation: pulsar 1.5s infinite; /* Animación de pulsar */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Sombra del corazón */
+            transition: transform 0.3s; /* Suavizar la transformación */
+        }
+
+        .corazon:hover {
+            transform: scale(1.1) rotate(-45deg); /* Aumentar tamaño al pasar el mouse */
+        }
+
+        .corazon::before,
+        .corazon::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            border-radius: 50%;
+        }
+
+        .corazon::before {
+            top: -100px; /* Mueve hacia arriba */
+            left: 0;
+        }
+
+        .corazon::after {
+            left: 100px; /* Mueve hacia la derecha */
+            top: 0;
+        }
+
+        @keyframes pulsar {
+            0%, 100% {
+                transform: scale(1) rotate(-45deg);
+            }
+            50% {
+                transform: scale(1.1) rotate(-45deg); /* Escalar para dar efecto de pulsar */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="corazon"></div>
+    <h1>Te amo</h1>
+
+    <script>
+        // Agregar una animación adicional al hacer clic en el corazón
+        const corazon = document.querySelector('.corazon');
+
+        corazon.addEventListener('click', () => {
+            corazon.style.transform = 'scale(1.2) rotate(-45deg)'; // Aumentar tamaño al hacer clic
+            setTimeout(() => {
+                corazon.style.transform = 'scale(1) rotate(-45deg)'; // Regresar al tamaño original
+            }, 300);
+        });
+    </script>
+</body>
+</html>
